@@ -41,6 +41,7 @@ def krrExperiment(dataName, inputFileName, parameters, sketchSizes):
             t0 = time.time()
             sigmaOpt, gammaOpt, mseTmp = cv.crossValid(matXtrain, vecYtrain, s, parameters)
             t1 = time.time()
+            print('cost time ' + str(t1 - t0))
             mse = 0
             for j in range(numRepeat2):
                 mse =  tp.trainPredict(matXtrain, vecYtrain, matXtest, vecYtest, s, sigmaOpt, gammaOpt, parameters)
