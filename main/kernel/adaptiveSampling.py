@@ -35,6 +35,7 @@ def adaptiveSamplingRBF(matX, sigma, s):
     matRes = numpy.dot(matQ, numpy.dot(matQ.T, matA))
     del matQ
     matRes = matA - matRes
+    del matA
     # Sampling
     matRes = numpy.square(matRes)
     vecProb = sum(matRes)
