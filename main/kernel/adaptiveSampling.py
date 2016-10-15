@@ -3,7 +3,7 @@ import kernelFun
 
 def adaptiveSamplingRBF(matX, sigma, s):
     n = matX.shape[0]
-    s1 = int(numpy.floor(s/3))
+    s1 = int(numpy.floor(s/4))
     s2 = s1
     s3 = s - s1 - s2
     n0 = min(n, 10 * s) # the oversampling parameter can be tuned
