@@ -2,6 +2,7 @@ import numpy
 import time
 import sys
 import scipy.io
+import scipy.sparse.linalg
 sys.path.append('../../main/lowrank/')
 import sparseCUR
 import sparseApproxSVD
