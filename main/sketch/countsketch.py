@@ -41,7 +41,7 @@ def countsketchSparse1(matX, s):
     for j in range(s):
         idx = (hashedIndices == j)
         matB = matX[idx, :]
-        matXsketch[j, :] = sum(matB)
+        matXsketch[j, :] = matB.sum(axis=0)
     return matXsketch
         
         
@@ -63,9 +63,9 @@ def countsketchSparse2(matX, matY, s):
     for j in range(s):
         idx = (hashedIndices == j)
         matB = matX[idx, :]
-        matXsketch[j, :] = sum(matB)
+        matXsketch[j, :] = matB.sum(axis=0)
         matC = matY[idx, :]
-        matYsketch[j, :] = sum(matC)
+        matYsketch[j, :] = matC.sum(axis=0)
     return matXsketch, matYsketch
         
         
