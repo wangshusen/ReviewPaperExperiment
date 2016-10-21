@@ -41,7 +41,7 @@ def countsketchSparse1(matX, s):
     for j in range(s):
         idx = (hashedIndices == j)
         matB = matX[idx, :]
-        matXsketch[j, :] = numpy.array(sum(matB).todense())
+        matXsketch[j, :] = sum(matB)
     return matXsketch
         
         
@@ -63,9 +63,9 @@ def countsketchSparse2(matX, matY, s):
     for j in range(s):
         idx = (hashedIndices == j)
         matB = matX[idx, :]
-        matXsketch[j, :] = numpy.array(sum(matB).todense())
+        matXsketch[j, :] = sum(matB)
         matC = matY[idx, :]
-        matYsketch[j, :] = numpy.array(sum(matC).todense())
+        matYsketch[j, :] = sum(matC)
     return matXsketch, matYsketch
         
         
