@@ -68,15 +68,15 @@ def lowrankExperiment(matA, param):
 
 
 def runExperiment(matA):
-    param = {'ratio': [1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10],
+    param = {'ratio': [1.5, 2],# 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10],
             'k': 100,
              's': 10,
-            'repeat': 20}
+            'repeat': 2}
     outputFileName = 'result_enron_approxSVD.mat'
 
 
     # ============ #
-    param['sketch'] = 'Gauss'
+    param['sketch'] = 'Count'
     param['model'] = 'OptCX'
     resultName = param['sketch'] + param['model']
     print('')
@@ -91,7 +91,7 @@ def runExperiment(matA):
 
 
     # ============ #
-    param['sketch'] = 'Count'
+    param['sketch'] = 'Gauss'
     param['model'] = 'OptCX'
     resultName = param['sketch'] + param['model']
     print('')
