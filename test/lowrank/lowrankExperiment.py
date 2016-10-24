@@ -72,7 +72,7 @@ def runExperiment(matA):
             'k': 100,
              's': 10,
             'repeat': 20}
-    outputFileName = 'result_enron_approxSVD.mat'
+    outputFileName = 'result_enron_approxSVD2.mat'
 
 
     # ============ #
@@ -126,10 +126,10 @@ def runExperiment(matA):
     print('')
     print('Sketch is ' + param['sketch'] + ',   Model is ' + param['model'])
     ErrorFro, ErrorSpe, Time0, Time1 = lowrankExperiment(matA, param)
-    resultDict = {'ErrorFro' + resultName: ErrorFro, 
-             'ErrorSpe' + resultName: ErrorSpe,
-             'Time0' + resultName: Time0,
-             'Time1' + resultName: Time1}
+    resultDict['ErrorFro' + resultName] = ErrorFro
+    resultDict['ErrorSpe' + resultName] = ErrorSpe
+    resultDict['Time0' + resultName] = Time0
+    resultDict['Time1' + resultName] = Time1
     scipy.io.savemat(outputFileName, resultDict)
 
 
