@@ -31,6 +31,21 @@ def countsketch1(matX,  s):
         matXsketch[h, :] += g * vecX
     return matXsketch
 
+
+def countsketchS(matX, s):
+    n, d = matX.shape
+    matS = numpy.zeros((n, s))
+    hashedIndices = numpy.random.choice(s, n, replace=True)
+    randSigns = numpy.random.choice(2, n, replace=True) * 2 - 1 
+    matXsketch = numpy.zeros((s, d))
+    for j in range(n):
+        vecX = matX[j, :]
+        h = hashedIndices[j]
+        g = randSigns[j]
+        matXsketch[h, :] += g * vecX
+        matS[j, h] = g
+    return matXsketch, matS
+
 def countsketchSparse1(matX, s):
     n, d = matX.shape
     hashedIndices = numpy.random.choice(s, n, replace=True)
