@@ -3,6 +3,8 @@ import sys
 sys.path.append('../../main/sketch/')
 import countsketch as csketch
 import srft
+sys.path.append('../../main/regression/')
+import scipy.io
 
 
 def bvOptimal(vecS, matVW0, n, gamma, xi):
@@ -315,4 +317,61 @@ def bvExperiment(matX, matW0, s, gamma, xi, vecG, method):
                  }
     return resultDict
 
+
+def run(filename):
+    # load data
+    dataname = filename[0:2]
+    dataDict = scipy.io.loadmat(filename)
+    matX = dataDict['matX']
+    vecW = dataDict['vecW']
+    print(matX.shape)
+    matU, vecS, matV = numpy.linalg.svd(matX, full_matrices=False)
+    
+    xi = 0.1
+    vecG = [1, 2, 3, 4, 6, 8, 10, 12, 15, 18, 22, 26, 30, 35, 40, 45, 50]
+    method = 'hat'
+
+    
+    s = 1000
+    gamma = 1e-6
+    resultDict = bvExperiment(matX, vecW, s, gamma, xi, vecG, method)
+    print(resultDict)
+    outputFileName = 'avg_' + method +'_' + dataname + '_s' + str(s) + '_gam' + str(gamma) + '.mat'
+    scipy.io.savemat(outputFileName, resultDict)
+    
+    s = 1000
+    gamma = 1e-12
+    resultDict = bvExperiment(matX, vecW, s, gamma, xi, vecG, method)
+    print(resultDict)
+    outputFileName = 'avg_' + method +'_' + dataname + '_s' + str(s) + '_gam' + str(gamma) + '.mat'
+    scipy.io.savemat(outputFileName, resultDict)
+    
+    s = 2000
+    gamma = 1e-6
+    resultDict = bvExperiment(matX, vecW, s, gamma, xi, vecG, method)
+    print(resultDict)
+    outputFileName = 'avg_' + method +'_' + dataname + '_s' + str(s) + '_gam' + str(gamma) + '.mat'
+    scipy.io.savemat(outputFileName, resultDict)
+    
+    s = 2000
+    gamma = 1e-12
+    resultDict = bvExperiment(matX, vecW, s, gamma, xi, vecG, method)
+    print(resultDict)
+    outputFileName = 'avg_' + method +'_' + dataname + '_s' + str(s) + '_gam' + str(gamma) + '.mat'
+    scipy.io.savemat(outputFileName, resultDict)
+    
+    s = 5000
+    gamma = 1e-6
+    resultDict = bvExperiment(matX, vecW, s, gamma, xi, vecG, method)
+    print(resultDict)
+    outputFileName = 'avg_' + method +'_' + dataname + '_s' + str(s) + '_gam' + str(gamma) + '.mat'
+    scipy.io.savemat(outputFileName, resultDict)
+    
+
+    s = 5000
+    gamma = 1e-12
+    resultDict = bvExperiment(matX, vecW, s, gamma, xi, vecG, method)
+    print(resultDict)
+    outputFileName = 'avg_' + method +'_' + dataname + '_s' + str(s) + '_gam' + str(gamma) + '.mat'
+    scipy.io.savemat(outputFileName, resultDict)
         
