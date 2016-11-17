@@ -126,7 +126,7 @@ def bvAvgTilde(vecS, matU, matVW0, gamma, xi, sketch, s, vecG):
     
     
 def bvAvgHat(vecS, matU, matVW0, gamma, xi, sketch, s, vecG):
-    repeat = 30
+    repeat = 50
     lenG = len(vecG)
     maxG = numpy.max(vecG)
     setG = set(vecG)
@@ -149,6 +149,8 @@ def bvAvgHat(vecS, matU, matVW0, gamma, xi, sketch, s, vecG):
         scaling = scaling.reshape(n, 1)
     
     for iter in range(repeat):
+        if iter % 10 == 0:
+            print('iteration ' + str(iter))
         matSumB = numpy.zeros((d, 1))
         matSumV = numpy.zeros((d, d))
         
